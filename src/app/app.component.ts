@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AdItem } from './ad-item';
+import { AdService } from './service/ad.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'angular-dynamic-component';
+  ads: AdItem[];
+
+  constructor(private adService: AdService) {}
+
+  ngOnInit() {
+    this.ads = this.adService.getAds();
+  }
 }
